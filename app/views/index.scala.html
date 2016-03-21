@@ -1,7 +1,5 @@
-@(message: String)
+@(message: String)(implicit request: play.api.mvc.Request[AnyContent])
 
-@main("Welcome to Play") {
-
-    @play20.welcome(message)
-
+@main("Red Card Robot") {
+    @message
 }
