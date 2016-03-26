@@ -28,11 +28,28 @@
     <appender-ref ref="STDOUT" />
 </appender>
 
-<logger name="play" level="INFO" />
+    <appender name="DBFILE" class="ch.qos.logback.core.FileAppender">
+        <file>${application.home}/logs/sql.log</file>
+        <encoder>
+            <pattern>%date - [%level] - from %logger in %thread %n%message%n%xException%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="play" level="INFO" />
 <logger name="application" level="DEBUG" />
-<logger name="slick" level="DEBUG" />
+<logger name="anorm" level="DEBUG" />
+<logger name="com.jolbox.bonecp" level="DEBUG"/>
 
 <logger name="com.gargoylesoftware.htmlunit.javascript" level="OFF" />
+    <logger name="log4jdbc.log4j2" level="ERROR">
+        <appender-ref ref="STDOUT" />
+        <appender-ref ref="FILE" />
+    </logger>
+    <logger name="jdbc.sqlonly" level="INFO" >
+        <appender-ref ref="DBFILE" />
+    </logger>
+
+
 
 <root level="WARN">
     <appender-ref ref="ASYNCFILE" />
