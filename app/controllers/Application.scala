@@ -1,22 +1,24 @@
 package controllers
 
+import models.{Db, Member}
 import play.api._
 import play.api.mvc._
-import anorm._
 import play.api.db.DB
-
-import models.Computer
 import play.api.libs.json._
+import sorm.Persisted
 
 
 class Application extends Controller {
 
   def index = Action { implicit request =>
 
-    val list = Computer.list()
-    println(list)
-    for (item <- list.items if item._1 != "foo")
-      println(item._1)
+    //val bob = Db.save(Member("Bob"))
+    //val dole = Db.save(Member("Dole"))
+
+    val members = Db.query[Member]
+      .fetch() // the sql query gets emitted only at this point
+
+    members.foreach(println)
 
     Ok(views.html.index("Dashboard"))
   }
@@ -34,26 +36,5 @@ class Application extends Controller {
   }
 
 
-  def listComputers() = Action {
-
-    val json: JsValue = JsObject(Seq(
-      "name" -> JsString("Watership Down"),
-      "location" -> JsObject(Seq("lat" -> JsNumber(51.235685), "long" -> JsNumber(-1.309197))),
-      "residents" -> JsArray(Seq(
-        JsObject(Seq(
-          "name" -> JsString("Fiver"),
-          "age" -> JsNumber(4),
-          "role" -> JsNull
-        )),
-        JsObject(Seq(
-          "name" -> JsString("Bigwig"),
-          "age" -> JsNumber(6),
-          "role" -> JsString("Owsla")
-        ))
-      ))
-    ))
-
-    Ok(json).as("application/json")
-  }
 
 }

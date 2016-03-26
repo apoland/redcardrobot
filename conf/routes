@@ -8,7 +8,7 @@ GET     /members                    controllers.Application.members
 GET     /events                     controllers.Application.events
 GET     /messages                   controllers.Application.messages
 
-GET     /listComputers                   controllers.Application.listComputers()
+#GET     /listComputers                   controllers.Application.listComputers()
 
 
 # Map static resources from the /public folder to the /assets URL path
