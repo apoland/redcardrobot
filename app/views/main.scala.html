@@ -1,10 +1,10 @@
-@(title: String)(content: Html)(implicit request: play.api.mvc.Request[AnyContent])
+@(content: Html)(implicit request: play.api.mvc.Request[AnyContent])
 
 <!DOCTYPE html>
 
 <html>
     <head>
-        <title>@title</title>
+        <title>Red Card Robot</title>
         <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
         <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
 
@@ -49,7 +49,7 @@
 
         <div class="container">
             <p>@content</p>
-            <div id="calendar"></div>
+            <div id="calendardisabled"></div>
         </div>
 
 </body>

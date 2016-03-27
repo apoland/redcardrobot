@@ -4,9 +4,14 @@
 
 # Home page
 GET     /                           controllers.Application.index
-GET     /members                    controllers.Application.members
 GET     /events                     controllers.Application.events
+
+GET     /members                    controllers.Application.members
+POST    /members/save               controllers.Application.saveMember
+GET    /members/delete               controllers.Application.deleteMember(memberId: Long)
+
 GET     /messages                   controllers.Application.messages
+POST     /messages/new                   controllers.Application.newMessage
 
 #GET     /listComputers                   controllers.Application.listComputers()
 
