@@ -20,5 +20,5 @@ POST     /messages/new                   controllers.Application.newMessage
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
 
 
-POST    /SMS/incoming               controllers.SMS.incoming
+GET    /SMS/incoming               controllers.SMS.incoming
     

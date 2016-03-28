@@ -1,12 +1,15 @@
 package util
 
 import java.util
+
 import play.api.mvc._
 import com.twilio.sdk._
 import com.twilio.sdk.verbs.TwiMLResponse
 import org.apache.http.NameValuePair
 import org.apache.http.message.BasicNameValuePair
 import play.api.{Logger, Play}
+
+import scala.xml.Elem
 
 /**
   * Created by apoland on 3/27/16.
@@ -37,11 +40,12 @@ object Twilio {
 
   }
 
-  def processInboundSMS(request: Request[AnyContent]): String = {
+  def processInboundSMS(request: Request[AnyContent]): Elem = {
+    val requestVars = request.queryString.map { case (k, Seq(v)) => s"$k -> $v" }.toString()
+    Logger.info(s"Incoming SMS: $requestVars")
+    //Logger.info("Incoming SMS: "+ request.body.asFormUrlEncoded.get.map(v => s"${v._1} -> ${v._2.head} "))
 
-    Logger.info("Incoming SMS: "+ request.body.asFormUrlEncoded.get.map(v => s"${v._1} -> ${v._2.head} "))
-
-    "<Response/>"
+    <Response/>
 
   }
 
