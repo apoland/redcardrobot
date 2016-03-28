@@ -20,8 +20,8 @@
                             <td>@message.id</td>
                             <td>@Format.date(message.date)</td>
                             <td>All Members</td>
-                            <td>@message.body</td>
-                            <td>
+                            <td class="col-md-4">@message.body</td>
+                            <td class="col-md-4">
                                 <table class="table ">
                             @for(response <- message.responses) {
 
