@@ -39,7 +39,7 @@ object Twilio {
 
   def processInboundSMS(request: Request[AnyContent]): String = {
 
-    Logger.info("Incoming SMS: "+ request.body.asFormUrlEncoded.get.map(v => s"${v._1} -> ${v._2} "))
+    Logger.info("Incoming SMS: "+ request.body.asFormUrlEncoded.get.map(v => s"${v._1} -> ${v._2.head} "))
 
     new TwiMLResponse().toString
 
