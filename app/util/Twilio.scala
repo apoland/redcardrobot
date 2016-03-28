@@ -41,7 +41,7 @@ object Twilio {
 
     Logger.info("Incoming SMS: "+ request.body.asFormUrlEncoded.get.map(v => s"${v._1} -> ${v._2.head} "))
 
-    new TwiMLResponse().toString
+    "<Response/>"
 
   }
 
