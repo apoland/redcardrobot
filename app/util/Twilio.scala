@@ -9,6 +9,7 @@ import org.apache.http.NameValuePair
 import org.apache.http.message.BasicNameValuePair
 import play.api.{Logger, Play}
 
+import scala.collection.mutable
 import scala.xml.Elem
 
 /**
@@ -46,9 +47,9 @@ object Twilio {
     //Logger.info(s"Incoming SMS: $requestVars")
     //Logger.info("Incoming SMS: "+ request.body.asFormUrlEncoded.get.map(v => s"${v._1} -> ${v._2.head} "))
 
-    val sid = request.queryString.getOrElse("MessageSid", "").toString
-    val body = request.queryString.getOrElse("Body", "").toString
-    val from = request.queryString.getOrElse("From", "").toString
+    val sid = request.queryString.get("MessageSid").getOrElse(mutable.Buffer()).mkString
+    val body = request.queryString.get("Body").getOrElse(mutable.Buffer()).mkString
+    val from = request.queryString.get("From").getOrElse(mutable.Buffer()).mkString
 
     Logger.info(s"[$sid] Incoming SMS: From: $from -> $body")
 
