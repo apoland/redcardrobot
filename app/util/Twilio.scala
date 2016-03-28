@@ -46,9 +46,9 @@ object Twilio {
     //Logger.info(s"Incoming SMS: $requestVars")
     //Logger.info("Incoming SMS: "+ request.body.asFormUrlEncoded.get.map(v => s"${v._1} -> ${v._2.head} "))
 
-    val sid = request.queryString.getOrElse("MessageSid", "")
-    val body = request.queryString.getOrElse("Body", "")
-    val from = request.queryString.getOrElse("From", "")
+    val sid = request.queryString.getOrElse("MessageSid", "").toString
+    val body = request.queryString.getOrElse("Body", "").toString
+    val from = request.queryString.getOrElse("From", "").toString
 
     Logger.info(s"[$sid] Incoming SMS: From: $from -> $body")
 
