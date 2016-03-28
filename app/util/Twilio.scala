@@ -29,8 +29,16 @@ object Twilio {
           params.add(new BasicNameValuePair("Body", messageBody))
           params.add(new BasicNameValuePair("To", number))
           params.add(new BasicNameValuePair("From", FROM_PHONE))
-          val message = messageFactory.create(params)
-          Logger.info(s"[${message.getSid()}] Sent SMS to $number -> $messageBody")
+
+          try {
+            val message = messageFactory.create(params)
+            Logger.info(s"[${message.getSid()}] Sent SMS to $number -> $messageBody")
+          } catch {
+            case e: Exception =>
+              Logger.error(s"Problem sending SMS to ${number} - ${e}")
+              e.printStackTrace()
+          }
+
         }
       }
     }.start()
