@@ -1,8 +1,9 @@
 package util
 
 import java.util
-
-import com.twilio.sdk.TwilioRestClient
+import play.api.mvc._
+import com.twilio.sdk._
+import com.twilio.sdk.verbs.TwiMLResponse
 import org.apache.http.NameValuePair
 import org.apache.http.message.BasicNameValuePair
 import play.api.{Logger, Play}
@@ -33,6 +34,14 @@ object Twilio {
         }
       }
     }.start()
+
+  }
+
+  def processInboundSMS(request: Request[AnyContent]): String = {
+
+    Logger.info("Incoming SMS: "+ request.body.asFormUrlEncoded.get.map(v => s"${v._1} -> ${v._2} "))
+
+    new TwiMLResponse().toString
 
   }
 
