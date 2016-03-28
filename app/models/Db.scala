@@ -8,8 +8,8 @@ import sorm._
 
 // Declare a model:
 case class Member( name : String, email: String, phone: String, instrument: String )
-case class Message(body: String, date: DateTime, recipients: Set[Member] )
-case class Response(sid: String, from: String, body: String, message: Message, member: Member )
+case class Message(body: String, date: DateTime, recipients: Set[Member], responses: Set[Response] )
+case class Response(sid: String, from: String, body: String, date: DateTime, member: Member )
 
 
 object Db extends Instance (

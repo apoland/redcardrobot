@@ -1,8 +1,7 @@
 package controllers
 
 import util.Twilio
-
-import models.{Db, Member, Message}
+import models.{Db, Member, Message, Response}
 import org.joda.time.DateTime
 import play.api._
 import play.api.mvc._
@@ -62,7 +61,8 @@ class Application extends Controller {
       mapping(
         "body" -> text,
         "date" -> default(jodaDate, new DateTime),
-        "recipients" -> ignored( Set[Member]() )
+        "recipients" -> ignored( Set[Member]() ),
+        "responses" -> ignored( Set[Response]() )
       )(Message.apply)(Message.unapply)
     )
 

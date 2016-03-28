@@ -11,19 +11,24 @@
         <div class="panel-heading">Sent SMS Messages</div>
         <div class="panel-body">
             <div>
-                <table class="table table-bordered table-striped table-hover">
+                <table class="table table-bordered table-hover">
                     <thead>
-                        <th>Message #</th><th>Time Sent</th><th>Message</th><th>Recipients</th>
+                        <th>Message #</th><th>Time Sent</th><th>Group</th><th>Message</th><th>Responses</th>
                     </thead>
                     @for(message: Message with Persisted <- messages) {
                         <tr>
                             <td>@message.id</td>
                             <td>@Format.date(message.date)</td>
+                            <td>All Members</td>
                             <td>@message.body</td>
                             <td>
-                            @for(member <- message.recipients) {
-                                <li>@member.name (@member.phone) - Response: NONE</li>
+                                <table class="table ">
+                            @for(response <- message.responses) {
+
+                                <tr><td>@Format.date(response.date)</td><td>@response.member.name (@response.member.phone)</td><td><i>@response.body</i></td></tr>
+
                             }
+                                </table>
                             </td>
 
                         </tr>
