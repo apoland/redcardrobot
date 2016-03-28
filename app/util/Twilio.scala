@@ -41,9 +41,20 @@ object Twilio {
   }
 
   def processInboundSMS(request: Request[AnyContent]): Elem = {
-    val requestVars = request.queryString.map { case (k, Seq(v)) => s"$k -> $v" }.toString()
-    Logger.info(s"Incoming SMS: $requestVars")
+
+    //val requestVars = request.queryString.map { case (k, Seq(v)) => s"$k -> $v" }.toString()
+    //Logger.info(s"Incoming SMS: $requestVars")
     //Logger.info("Incoming SMS: "+ request.body.asFormUrlEncoded.get.map(v => s"${v._1} -> ${v._2.head} "))
+
+    val sid = request.queryString.getOrElse("MessageSid", "")
+    val body = request.queryString.getOrElse("Body", "")
+    val from = request.queryString.getOrElse("From", "")
+
+    Logger.info(s"[$sid] Incoming SMS: From: $from -> $body")
+
+    //log incoming message
+    //associate with user and event
+
 
     <Response/>
 
