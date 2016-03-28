@@ -13,10 +13,13 @@
             <div>
                 <table class="table table-bordered table-striped table-hover">
                     <thead>
-                        <th>Time Sent</th><th>Message</th><th>Recipients</th>
+                        <th>Message #</th><th>Time Sent</th><th>Message</th><th>Recipients</th>
                     </thead>
                     @for(message: Message with Persisted <- messages) {
-                        <tr><td>@Format.date(message.date)</td><td>@message.body</td>
+                        <tr>
+                            <td>@message.id</td>
+                            <td>@Format.date(message.date)</td>
+                            <td>@message.body</td>
                             <td>
                             @for(member <- message.recipients) {
                                 <li>@member.name (@member.phone) - Response: NONE</li>
