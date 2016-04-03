@@ -19,11 +19,11 @@
                         <tr>
                             <td>@message.id</td>
                             <td>@Format.date(message.date)</td>
-                            <td>All Members</td>
+                            <td>All Members (@message.recipients.count(x => true))</td>
                             <td class="col-md-4">@message.body</td>
                             <td class="col-md-4">
                                 <table class="table ">
-                            @for(response <- message.responses) {
+                            @for(response <- message.responses.toSeq.sortWith((x,y) => x.date.isAfter(y.date))) {
 
                                 <tr><td>@Format.date(response.date)</td><td>@response.member.name (@response.member.instrument)</td><td><i>@response.body</i></td></tr>
 

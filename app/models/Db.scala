@@ -18,9 +18,15 @@ object Db extends Instance (
   user = Play.current.configuration.getString("db.default.username").get,
   password = Play.current.configuration.getString("db.default.password").get,
   initMode = InitMode.Create,
-  poolSize = 12
+  poolSize = 12) {
 
-)
+
+  def reverseDateSort(response1: Response, response2: Response): Boolean = {
+    response1.date.isAfter(response2.date)
+  }
+
+
+}
 
 
 
