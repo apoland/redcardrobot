@@ -60,7 +60,9 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="name">Message Text (140 characters or less)</label>
-                            <textarea name="body" rows="3" maxlength="140" placeholder="Text" class="form-control"></textarea></div>
+                            <textarea id="messagebody" name="body" rows="3" maxlength="140" placeholder="Text" class="form-control"></textarea>
+                            <p id="messagebody_feedback"></p>
+                        </div>
                         <div class="form-group">
                             <label for="instrument">Send to Which Group?</label>
                             <select name="instrument" id="instrument" class="form-control">
@@ -81,5 +83,19 @@
         </div>
 
     </form>
+
+    <script>
+            $(document).ready(function() {
+                var text_max = 140;
+                $('#messagebody_feedback').html(text_max + ' characters remaining');
+
+                $('#messagebody').keyup(function() {
+                    var text_length = $('#messagebody').val().length;
+                    var text_remaining = text_max - text_length;
+
+                    $('#messagebody_feedback').html(text_remaining + ' characters remaining');
+                });
+            });
+    </script>
 
 }
