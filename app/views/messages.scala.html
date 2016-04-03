@@ -25,7 +25,7 @@
                                 <table class="table ">
                             @for(response <- message.responses) {
 
-                                <tr><td>@Format.date(response.date)</td><td>@response.member.name (@response.member.phone)</td><td><i>@response.body</i></td></tr>
+                                <tr><td>@Format.date(response.date)</td><td>@response.member.name (@response.member.instrument)</td><td><i>@response.body</i></td></tr>
 
                             }
                                 </table>
