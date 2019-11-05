@@ -88,7 +88,7 @@ class Application extends Controller {
 
      val messages = Db.query[Message]
          .order("date", true)
-         .limit(3)
+         .limit(5)
          .fetch()
 
 
