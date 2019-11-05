@@ -29,15 +29,17 @@
                         </div>
                         <div class="collapse navbar-collapse">
                             <ul class="nav navbar-nav">
+                                <!--
                                 <li class="@("active".when(request.path == controllers.routes.Application.index().toString()))">
                                     <a href="@routes.Application.index()"><i class="fa fa-dashboard"></i><span> </span><span>Dashboard</span></a>
-                                </li>
+                                </li>-->
                                 <li class="@("active".when(request.path == controllers.routes.Application.members().toString()))">
                                     <a href="@routes.Application.members()"><i class="fa fa-user"></i><span> </span><span>Members</span></a>
                                 </li>
+                                <!--
                                 <li class="@("active".when(request.path == controllers.routes.Application.events().toString()))">
                                     <a href="@routes.Application.events()"><i class="fa fa-calendar-o"></i><span> </span><span>Events</span></a>
-                                </li>
+                                </li>-->
                                 <li class="@("active".when(request.path == controllers.routes.Application.messages().toString()))">
                                     <a href="@routes.Application.messages()"><i class="fa fa-envelope-o"></i><span> </span><span>Messages</span></a>
                                 </li>
