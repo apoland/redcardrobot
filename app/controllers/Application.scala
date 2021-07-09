@@ -5,7 +5,6 @@ import models.{Db, Member, Message, Response}
 import org.joda.time.DateTime
 import play.api._
 import play.api.mvc._
-import play.api.db.DB
 import play.api.libs.json._
 import play.api.Logger
 import play.api.data._
